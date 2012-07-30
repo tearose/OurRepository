@@ -1,0 +1,11 @@
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\bin\Debug\PersonWinForms.exe
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\bin\Debug\PersonWinForms.pdb
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\PersonWinForms.Form1.resources
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\PersonWinForms.Properties.Resources.resources
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\PersonWinForms.exe
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\obj\x86\Debug\PersonWinForms.pdb
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\bin\Debug\PersonNet.dll
+D:\_SoftServeAcademy\SoftServe_2month\PersonWinForms\bin\Debug\PersonNet.pdb

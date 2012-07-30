@@ -1,0 +1,9 @@
+<Modules>
+  <Module PersistentId="2F3B7D7F-1272-4015-825B-C077FA73C8D6" ModuleId="PersonNet" />
+  <Module PersistentId="AF81036D-FF78-4BB0-9DDE-D03120FAB298" ModuleId="TestPersonNet" />
+  <Module PersistentId="D4691E0F-49B8-41BE-87AB-D3E1DE441DDA" ModuleId="PersonNetServer" />
+  <Module PersistentId="12AAE41B-0D0B-4681-A0D2-4A2C20F8A288" ModuleId="PersonWinForms" />
+  <Module PersistentId="66F6C9FC-58EA-41CF-BDFF-53A667030D4F" ModuleId="PersonWebForms" />
+  <Module PersistentId="45D4C2BA-3060-4307-B8E4-CA8DA3B84C86" ModuleId="PersonWinPhone" />
+  <Module PersistentId="8CE32887-DFF3-4E1D-9ECE-D750F5A448F9" ModuleId="PersonNetPhone" />
+</Modules>

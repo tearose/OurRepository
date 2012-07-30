@@ -1,0 +1,10 @@
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\TestPersonNet.dll
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\TestPersonNet.pdb
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\nunit.framework.dll
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\PersonNet.dll
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\PersonNet.pdb
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\obj\Debug\ResolveAssemblyReference.cache
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\obj\Debug\TestPersonNet.dll
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\obj\Debug\TestPersonNet.pdb
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\NUnitForms.dll
+D:\_SoftServeAcademy\SoftServe_2month\TestPersonNet\bin\Debug\NUnitForms.ScreenCapture.exe

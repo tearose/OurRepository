@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<project name="TestApp">
+
+  <property name="solution.dir" value="." />
+  <property name="solution.file.name" value="PersonNet.sln" />
+  <property name="build.framework.dir"
+            value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\" />
+  <property name="build.configuration" value="Debug" />
+  <property name="build.platform" value="Any CPU" />
+  <property name="build.msbuildTargetList" value="Clean;Rebuild" />
+  <property name="build.verbosity" value="quiet" />
+  
+  <property name="tests.dir" value="${solution.dir}\TestPersonNet" />
+  <property name="tests.results.dir" value="${solution.dir}\Out" />
+  <property name="tests.assembly.name" value="TestPersonNet.dll" /> 
+  
+<target name="build">
+  <echo message="build starded at: ${datetime::now()}" />
+     <exec program="MSBuild.exe"
+          basedir="${build.framework.dir}"
+          workingdir="${solution.dir}"
+          resultproperty="build.result" failonerror="true">
+    </exec>
+  <echo message="build completed at: ${datetime::now()}" />
+</target> 
+</project>

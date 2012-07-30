@@ -1,0 +1,7 @@
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\bin\Release\PersonNetServer.exe
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\bin\Release\PersonNetServer.pdb
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\bin\Release\PersonNet.dll
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\bin\Release\PersonNet.pdb
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\obj\x86\Release\ResolveAssemblyReference.cache
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\obj\x86\Release\PersonNetServer.exe
+D:\_SoftServeAcademy\SoftServe_2month\PersonNet\PersonNetServer\obj\x86\Release\PersonNetServer.pdb
