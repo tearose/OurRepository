@@ -21,7 +21,7 @@ public class DsMySQL extends IDataStorage
 	{
 		int i = 0;
 		PersonList pList = new PersonList();
-	//	DataBase.setDB_CONNECTION(path);
+//	--	DataBase.setDB_CONNECTION(path);
 		ResultSet rs = null;
 		try
 		{
