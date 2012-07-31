@@ -23,4 +23,16 @@
     </exec>
   <echo message="build completed at: ${datetime::now()}" />
 </target> 
+<target name="tests.build">
+  <echo message="tests.build starded at: ${datetime::now()}" />
+    <nunit2 haltonfailure="false" failonerror="true">
+      <formatter type="Xml"
+                 usefile="true"
+                 extension=".xml"
+                 outputdir="${tests.results.dir}" />
+      <formatter type="Plain" usefile="false" />
+      <test assemblyname="${tests.dir}\bin\${build.configuration}\${tests.assembly.name}" />
+    </nunit2>	
+    <echo message="tests.build completed at: ${datetime::now()}" />    
+ </target>
 </project>
