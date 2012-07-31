@@ -1,4 +1,4 @@
-package com.tcpclient;
+package com.tcpseserverold;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import com.person.*;
 
 
-public class Client 
+public class Client1 
 {
 	private Socket socket; 
 	private BufferedWriter bw;
 	private BufferedReader userInput;
 	private PrintStream ps;
 
-	public Client(String host, int port) throws IOException
+	public Client1(String host, int port) throws IOException
 	{
 		socket = new Socket(host, port);
 //		bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8"));
@@ -144,10 +144,10 @@ public class Client
 
 	public static void main(String[] args) throws InterruptedException, SQLException
 	{
-		Client c = null;
+		Client1 c = null;
 		try
 		{
-			c = new Client("localhost", 3180);
+			c = new Client1("localhost", 3180);
 			//c.run();
 			
 			Person person = new Person(1223, "Mark", "Jons", 23331);
