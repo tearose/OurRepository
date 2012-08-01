@@ -1,4 +1,4 @@
-package com.tcpserver;
+package com.tcpseserverold;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -6,21 +6,21 @@ import java.net.Socket;
 
 
 
-public class AppServerByte
+public class AppServer
 {
-	private ServerSocket server = null;
+	private ServerSocket server;
 
-	private AppServerByte(int port)
+	private AppServer(int port)
 	{
 		try
 		{
 		 server = new ServerSocket(port);
-		 System.out.println("Server byte listening on port: "+port);
+		 System.out.println("Server listening on port: "+port);
 			while (true)
 			{
 
 				Socket sock = server.accept();
-				ServerThreadByte serverThread = new ServerThreadByte(sock);  
+				ServerThread serverThread = new ServerThread(sock);  
 				serverThread.start();
 				System.out.println("client connected");
 			}
@@ -29,18 +29,6 @@ public class AppServerByte
 		{
 			System.out.println("Can not start server on port: "+port+" error: "+e.getMessage());
 			System.err.println(e);
-		}
-		finally
-		{
-			if (server != null)
-				try
-				{
-					server.close();
-				} catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 		}
 	}
 
@@ -52,7 +40,7 @@ public class AppServerByte
 		{
 			port = Integer.parseInt(args[0]);
 		}		
-		new AppServerByte(port);
+		new AppServer(port);
 	}
 
 }

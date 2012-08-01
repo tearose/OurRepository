@@ -8,14 +8,14 @@ import java.net.Socket;
 
 public class AppServer
 {
-	private ServerSocket server;
+	private ServerSocket server = null;
 
 	private AppServer(int port)
 	{
 		try
 		{
 		 server = new ServerSocket(port);
-		 System.out.println("Server listening on port: "+port);
+		 System.out.println("Server byte listening on port: "+port);
 			while (true)
 			{
 
@@ -29,6 +29,18 @@ public class AppServer
 		{
 			System.out.println("Can not start server on port: "+port+" error: "+e.getMessage());
 			System.err.println(e);
+		}
+		finally
+		{
+			if (server != null)
+				try
+				{
+					server.close();
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		}
 	}
 

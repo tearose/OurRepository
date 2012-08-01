@@ -1,13 +1,15 @@
 package com.person;
 
 import static org.junit.Assert.*;
+import junit.framework.TestCase;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class PersonTest
+public class PersonTest extends TestCase
 {
 	private Person p;
 	private static final String personXML = "<Person><id>1</id><firstName>Alex</firstName><lastName>Vostrykov</lastName><age>31</age></Person>";
@@ -31,6 +33,7 @@ public class PersonTest
 	@After
 	public void tearDown() throws Exception
 	{
+		p = null;
 	}
 
 	@Test

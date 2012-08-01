@@ -1,9 +1,8 @@
 package com.tcpserver;
 
-import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import com.person.DataStorageFactory;
@@ -13,106 +12,121 @@ import com.person.PersonList;
 
 public class ServerThread extends Thread
 {
-	private PrintStream os;
-	private BufferedReader is;
+//	private PrintStream os;
+//	private BufferedReader is;
 	private InetAddress addr;
+	private Socket connect;
 	private IDataStorage dataStorage;
 	public enum Actions{INSERT,SELECT,UPDATE,DELETE};
 	
+	private DataOutputStream out;
+	private DataInputStream in;	
 	
-
-	public ServerThread(Socket s) throws IOException
+	public ServerThread(Socket connect) throws IOException
 	{
-		os = new PrintStream(s.getOutputStream());
-		is = new BufferedReader( new InputStreamReader(s.getInputStream(),"UTF-8"));
-		addr = s.getInetAddress();	
+		this.connect = connect;		
+		out = new DataOutputStream(connect.getOutputStream());
+		in = new DataInputStream(connect.getInputStream());
+		addr = connect.getInetAddress();	
+		
 	}
-
 	public void run()
 	{
-		String str;
+		String str = "";
 		String fileName = "";
 		String action = "";
 		Person person = new Person();
+		byte[] bRes; 		
 
 		try
 		{
-			while ((str = is.readLine()) != null)
-			{
-				System.out.println("GOT QUERY: "+str);
-				String [] field = str.split("\\|");
 		
-				fileName = field[0];
-				action = field[1];
+
+					
+			
+			while (true)				
+			{
 				
-				if (!action.equalsIgnoreCase("Select"))
+				int len = connect.getInputStream().available();
+
+				if (len > 0)
 				{
-					person.fromXML(field[2]);
+					System.out.println("LENGTH =====" + len);					
+					byte[] bytesFrom = new byte[len];
+					int m = in.read(bytesFrom, 0, len);
+					if (m == -1) break;
+					str = new String(bytesFrom,"US-ASCII");
+					System.out.println("GOT QUERY: "+ str);
+					String [] field = str.split("\\|");
+			
+					fileName = field[0];
+					action = field[1];
+					
+					if (!action.equalsIgnoreCase("Select"))
+					{
+						person.fromXML(field[2]);
+					}
+	                dataStorage = DataStorageFactory.getInstance(fileName);
+	                String strResult = "OK";	
+	              
+	                   	Actions currAction = Actions.valueOf(action.toUpperCase());
+	              
+	                                               
+					switch (currAction)
+					{
+						case INSERT:
+	                        dataStorage.create(person);                       
+							break;
+						case UPDATE:
+							dataStorage.update(person);
+							break;
+						case DELETE:
+							dataStorage.delete(person);
+							break;
+						case SELECT:
+							PersonList pList = dataStorage.read();
+	                        strResult = pList.toString();
+	                        if (pList.isEmpty())
+	                            strResult = "Empty";
+	                        break;
+						default:
+							break;
+					}
+					//bRes = new byte[strResult.getBytes("US-ASCII").length];
+					bRes = strResult.getBytes("US-ASCII");
+					System.out.println("RESULT:" + strResult);
+					out.write(bRes, 0, bRes.length);
+					out.flush();
 				}
-                dataStorage = DataStorageFactory.getInstance(fileName);
-                String strResult = "OK";	
-              
-                   	Actions currAction = Actions.valueOf(action.toUpperCase());
-              
-                                               
-				switch (currAction)
-				{
-					case INSERT:
-                        dataStorage.create(person);
-                        os.println("OK");
-//                        os.flush();
-						break;
-					case UPDATE:
-						dataStorage.update(person);
-						os.println("OK");
-//						os.flush();
-						break;
-					case DELETE:
-						dataStorage.delete(person);
-						os.println("OK");
-//						os.flush();
-						break;
-					case SELECT:
-						PersonList pList = dataStorage.read();
-                        strResult = pList.toString();
-                        if (pList.isEmpty())
-                            strResult = "Empty";
-                        else os.println(strResult);
-//                        os.flush();
-						break;
-					default:
-						
-						break;
-				}
-				System.out.println(strResult);
-				os.println(strResult);;
+				this.sleep(100);
 			}
 
 		} 
 		catch (IOException  e)
 		{
 			System.err.println(e.getMessage());		
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
 	
 		finally
 		{
-			disconnect();		
+			try
+			{
+				System.out.println(addr.getHostName() + " disconnected");
+				if (out != null) out.close();
+				if (in != null) in.close();
+				if (connect != null) connect.close();			
+
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			} 
+		
 		}
 	}
 
-	public void disconnect()
-	{
-		try
-		{
-			System.out.println(addr.getHostName() + " disconnected");
-			os.close();
-			is.close();
-
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		} 
-
-	}
 
 }

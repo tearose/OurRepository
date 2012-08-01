@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 import com.person.*;
 
 
-public class ClientByte 
+public class ClientCRUD 
 {
 	private Socket socket = null; 
 	private PrintStream out = null;
@@ -16,7 +16,7 @@ public class ClientByte
 	private int port;
 	
 
-	public ClientByte(String host, int port)
+	public ClientCRUD(String host, int port)
 	{
 		this.host = host;
 		this.port = port;
@@ -164,24 +164,5 @@ public class ClientByte
 				e.printStackTrace();
 			}
 	}
-	public static void main(String[] args)
-	{
-		ClientByte c = null;
-			c = new ClientByte("localhost", 3180);
-			//c.run();
-			
-			Person person = new Person(88, "ALEX", "SOS", 99);
-			
-			c.create(person, "csv");
-			c.read("csv");			
-			System.out.println("--");
-//			c.read("person.csv");
-//			c.read("person.csv");			
-
-//			c.close();
-
-	}
-
-
 
 }
