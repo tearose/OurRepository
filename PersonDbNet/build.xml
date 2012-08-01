@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="PersonDbNet">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../eclipsejuno"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipsejuno"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
@@ -12,10 +17,10 @@
     </path>
     <path id="PersonDbNet.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../eclipsejuno/plugins/mysql-connector-java-5.1.20/mysql-connector-java-5.1.20-bin.jar"/>
+        <pathelement location="../../../../eclipsejuno/plugins/mysql-connector-java-5.1.20/mysql-connector-java-5.1.20-bin.jar"/>
         <path refid="JUnit 4.libraryclasspath"/>
     </path>
-    <target name="init" >
+    <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
@@ -26,6 +31,13 @@
         </copy>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="test">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="Android">
                 <exclude name="**/*.ucls"/>
                 <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
@@ -43,6 +55,7 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <src path="test"/>
+            <src path="Android"/>
             <classpath refid="PersonDbNet.classpath"/>
         </javac>
     </target>
@@ -78,18 +91,18 @@
             <classpath refid="PersonDbNet.classpath"/>
         </java>
     </target>
+    <target name="Client1 (1)">
+        <java classname="com.tcpseserverold.Client1" failonerror="true" fork="yes">
+            <classpath refid="PersonDbNet.classpath"/>
+        </java>
+    </target>
     <target name="AppServer">
-        <java classname="com.tcpserver.AppServer" failonerror="true" fork="yes">
+        <java classname="com.tcpseserverold.AppServer" failonerror="true" fork="yes">
             <classpath refid="PersonDbNet.classpath"/>
         </java>
     </target>
     <target name="AppServerOLD">
         <java classname="com.tcpseserverold.AppServerOLD" failonerror="true" fork="yes">
-            <classpath refid="PersonDbNet.classpath"/>
-        </java>
-    </target>
-    <target name="ClientByte">
-        <java classname="com.tcpclient.ClientByte" failonerror="true" fork="yes">
             <classpath refid="PersonDbNet.classpath"/>
         </java>
     </target>
@@ -101,13 +114,18 @@
             <classpath refid="PersonDbNet.classpath"/>
         </junit>
     </target>
-    <target name="Client (1)">
-        <java classname="com.tcpclient.Client" failonerror="true" fork="yes">
+    <target name="AppClient">
+        <java classname="com.tcpclient.AppClient" failonerror="true" fork="yes">
             <classpath refid="PersonDbNet.classpath"/>
         </java>
     </target>
     <target name="AppServerByte">
-        <java classname="com.tcpserver.AppServerByte" failonerror="true" fork="yes">
+        <java classname="com.tcpserver.AppServer" failonerror="true" fork="yes">
+            <classpath refid="PersonDbNet.classpath"/>
+        </java>
+    </target>
+    <target name="ClientCRUD">
+        <java classname="com.tcpclient.ClientCRUD" failonerror="true" fork="yes">
             <classpath refid="PersonDbNet.classpath"/>
         </java>
     </target>
@@ -115,6 +133,22 @@
         <java classname="com.person.DsCSV" failonerror="true" fork="yes">
             <classpath refid="PersonDbNet.classpath"/>
         </java>
+    </target>
+    <target name="PersonListTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.person.PersonListTest" todir="${junit.output.dir}"/>
+            <classpath refid="PersonDbNet.classpath"/>
+        </junit>
+    </target>
+    <target name="AllTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.person.AllTests" todir="${junit.output.dir}"/>
+            <classpath refid="PersonDbNet.classpath"/>
+        </junit>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">

@@ -6,44 +6,7 @@ public class PersonList extends ArrayList<Person>
 {
 	private static final long serialVersionUID = 1L;
 
-//	IDataStorage ds = null;
-//
-//	public void Init(String dataType)
-//	{
-//		ds = DataStorageFactory.getInstance(dataType);
-//	}
-//
-//	public void create(PersonList pList) 
-//	{
-////		Init(type);
-//		for (Person p : pList)
-//		{
-//			ds.create(p);
-//		}		
-//		
-//	}
-//	public PersonList read()
-//	{
-////		Init(type);
-//		return ds.read();
-//	}
-//	public void update(PersonList pList)
-//	{
-////		Init(type);
-//		for (Person p : pList)
-//		{
-//			ds.update(p);
-//		}
-//	}
-//	public void delete(PersonList pList)
-//	{
-////		Init(type);
-//		for (Person p : pList)
-//		{
-//			ds.delete(p);
-//		}
-//	}
-	
+
 	public String toString() {
 		String ret = "";
 		for(Person p:this)
@@ -52,19 +15,17 @@ public class PersonList extends ArrayList<Person>
 		}
 		return ret;
 	}
+	public PersonList fromXML(String xmlString)
+	{ 	
+		xmlString=xmlString.replace("</Person>", "</Person><end>");
+		String[] strPersons = xmlString.split("<end>");
+		for (int i = 0; i< strPersons.length;i++)
+		{
+			Person tmpPerson = new Person();
+			tmpPerson.fromXML(strPersons[i]);
+			this.add(tmpPerson);					
+		}    
+		return this;
+	}
 
-/*	public static void main(String[] args)
-	{
-		PersonaList l = new PersonaList();
-		l.add(new Persona());
-		l.get(0).setAge(12);
-		try
-		{
-			l.create(l, "jdbc:mysql://localhost:3306/test", "JDBC");
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}*/
 }

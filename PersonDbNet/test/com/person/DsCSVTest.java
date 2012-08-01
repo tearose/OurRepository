@@ -1,6 +1,7 @@
 package com.person;
 
 import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,7 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DsCSVTest
+public class DsCSVTest extends TestCase
 {
 	DsCSV ds;
 
@@ -31,6 +32,7 @@ public class DsCSVTest
 	@After
 	public void tearDown() throws Exception
 	{
+		ds = null;
 	}
 
 	@Test
