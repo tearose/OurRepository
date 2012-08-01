@@ -4,7 +4,7 @@
   <property name="solution.dir" value="." />
   <property name="solution.file.name" value="PersonNet.sln" />
   <property name="build.framework.dir"
-            value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\" />
+            value="C:\WINXP\Microsoft.NET\Framework\v4.0.30319\" />
   <property name="build.configuration" value="Debug" />
   <property name="build.platform" value="Any CPU" />
   <property name="build.msbuildTargetList" value="Clean;Rebuild" />
